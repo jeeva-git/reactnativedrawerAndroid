@@ -1,9 +1,10 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { Image, ScrollView, StyleSheet, View } from 'react-native';
+import { Image, ScrollView, StatusBar, StyleSheet, View } from 'react-native';
 import Logo from '../Assets/Logos/aws_logo.png';
 import CustomButton from '../components/CustomButton';
 import CustomInput from '../components/CustomInput';
+import Constants from '../Constants';
 
 const SignIn = () => {
   const [username, setUsername] = useState('');
@@ -23,6 +24,8 @@ const SignIn = () => {
   };
 
   return (
+    <>
+    <StatusBar backgroundColor={Constants.statusbarColor} />
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
         <Image
@@ -33,18 +36,16 @@ const SignIn = () => {
         <CustomInput
           placeholder="Username"
           value={username}
-          setValue={setUsername}
-        />
+          setValue={setUsername} />
         <CustomInput
           placeholder="Password"
           value={password}
           setValue={setPassword}
-          secureTextEntry
-        />
+          secureTextEntry />
 
         <CustomButton text="Sign In" onPress={handleSignIn} />
       </View>
-    </ScrollView>
+    </ScrollView></>
   );
 }
 
